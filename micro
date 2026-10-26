@@ -1,7 +1,7 @@
 # project 1
-def load_MDR_data(filename):
+def load_MDR_data(bac):
     mdr_data = {}
-    with open(filename, 'r', encoding='utf-8') as file:
+    with open(bac, 'r', encoding='utf-8') as file:
         for i in file:
            parts = i.strip().split(':')
            bacteria_name = parts[0]
