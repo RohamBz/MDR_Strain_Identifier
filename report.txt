@@ -1,4 +1,0 @@
---- reports of MDR ---
-tested antibiotics penicillin, erythromycin
-closet bacteria Staphylococcus aureus
-common resistance 2
