@@ -1,0 +1,4 @@
+--- reports of MDR ---
+tested antibiotics amoxycillin, penicillin
+closet bacteria Uropathogenic Escherichia coli
+common resistance 2
