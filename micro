@@ -1,4 +1,3 @@
-# project 1
 def load_MDR_data(bac):
     mdr_data = {}
     with open(bac, 'r', encoding='utf-8') as file:
