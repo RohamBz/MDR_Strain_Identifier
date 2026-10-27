@@ -1,4 +1,0 @@
-serratia marcescens:penicillin,ampicillin,cephalosporin
-Acinetobacter baumannii:penicillin,Meropenem,Imipenem
-Uropathogenic Escherichia coli:penicillin,ampicillin,amoxycillin
-Staphylococcus aureus:penicillin,erythromycin
