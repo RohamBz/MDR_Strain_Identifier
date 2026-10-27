@@ -1,0 +1,64 @@
+# project 1
+def load_MDR_data(bac):
+    mdr_data = {}
+    with open(bac, 'r', encoding='utf-8') as file:
+        for i in file:
+           parts = i.strip().split(':')
+           bacteria_name = parts[0]
+           resistance = parts[1].split(',')
+           mdr_data[bacteria_name] = resistance
+    return mdr_data
+def antibiotic_count():
+    while True:
+        try:
+            count = int(input('How many antibiotic resistances? (1 to 3): '))
+            if 1 <= count <= 3:
+                return count
+            else:
+                print('Please enter a number between 1 and 3!')
+        except ValueError:
+            print('Please enter a valid number!')
+
+
+def antibiotic_names(count):
+    lst = []
+    for i in range(1, count + 1):
+        name = input(f'Antibiotic({i}) name:').lower().strip()
+        lst.append(name)
+    return lst 
+    
+
+def find_matching(user_antibiotics, mdr_data):
+    user_set = set(user_antibiotics)
+    max_common = 0
+    best_match = None
+    for strain, resistances in mdr_data.items():
+        resistances_set = set(resistances)
+        common = user_set.intersection(resistances_set)
+        if len(common) > max_common:
+            max_common = len(common)
+            best_match = strain
+    return best_match, max_common
+def found_or_not(find):
+    if find[1] == 0:
+        print('no intersection to dataset')
+    else:
+        print(f'closet MDR resistances -> {find[0]} with {find[1]} intersection.')
+def report(bacteria_name, max_common, user_antibiotics):
+    with open('report.txt', 'w', encoding='utf-8') as k:
+        k.write('--- reports of MDR ---\n')
+        k.write(f'tested antibiotics {', '.join(user_antibiotics)}\n')
+        k.write(f'closet bacteria {bacteria_name}\n')
+        k.write(f'common resistance {max_common}\n')
+    print('report saved as (report.txt)')
+
+z = load_MDR_data('bac.txt')
+count = antibiotic_count()
+user_antibiotics = antibiotic_names(count)
+print(30*'-')
+find = find_matching(user_antibiotics, z)
+found_or_not(find)
+if find[1] > 0 :
+    report(find[0], find[1], user_antibiotics)
+
+
